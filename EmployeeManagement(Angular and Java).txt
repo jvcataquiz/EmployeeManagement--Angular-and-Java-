@@ -93,8 +93,15 @@ Add bootstrap in angular app
 
 Step 1: Cd employee-fronntend
 	npm i bootstrap
-
-
+	and add to style.css
+	//code
+	@import "~bootstrap/dist/css/bootstrap.min.css"
+Step 2: Testing if boostrap is working
+	Goto app -> app.component.html
+	delete all content
+	
+	add:
+<h1 class="text-center">{{title}}</h1> -> {{}} = called interpolation
 
 
 

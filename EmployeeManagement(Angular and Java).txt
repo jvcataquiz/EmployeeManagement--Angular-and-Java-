@@ -104,6 +104,37 @@ Step 2: Testing if boostrap is working
 <h1 class="text-center">{{title}}</h1> -> {{}} = called interpolation
 
 
+Creating Angular Employee List Component
+
+Step 1: Make sure you are in your App
+	//Hold reponse of REST API thats why we create it
+	Creating Typescript Class: ng g class employee
+	it will created 2 files located in the app folder:
+	1.) CREATE src/app/employee.spec.ts (162 bytes)
+	2.) CREATE src/app/employee.ts (26 bytes)
+
+Step 2: goto employee.ts to define some properties
+       
+    it should match in the employee class in the java(backend)
+    
+    //example
+    "id": number;
+    "firstName": string;
+    "lastName": string;
+    "emailAddress": string;
+    "address": string; 
+
+Step 3: Creating Angular Employee List Component
+ 	Command: ng g c employee-list
+	
+	it will created 1 folder and 4 files inside app folder:
+	Folder: employee-list
+	Files: 
+	   1. employee-list.component.html (28 bytes)        
+	   2. employee-list.component.spec.ts (642 bytes)    
+           3. employee-list.component.ts (302 bytes)
+	   4. employee-list.component.css (0 bytes)
+
 
 
 

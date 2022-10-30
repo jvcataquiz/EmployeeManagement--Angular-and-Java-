@@ -83,8 +83,16 @@ Step 1: Install node.js , npm and angular
 	  npm install -g @angular/cli
 Step 2: Open Vs code
  	Terminal and
-	ng new Employee-Front-End
+	ng new employee-frontend
 
+Step 3: TEST IT!!
+	cd employee-frontend
+	ng serve
+
+Add bootstrap in angular app
+
+Step 1: Cd employee-fronntend
+	npm i bootstrap
 
 
 

@@ -1,0 +1,14 @@
+EmployeeManagement-(Angular and Java)
+Step 1:
+	Goto Spring initialiazer:
+	Add 
+	1. Spring Web
+	2. Mysql Driver
+	3. Jpa
+	4. Dev Tools
+	Then Generate
+Step 2: Setup Database
+	Open workbench 
+	crete database employee_mangement;
+
+	

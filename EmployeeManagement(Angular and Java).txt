@@ -71,11 +71,19 @@ Step 2: Create EmployeeController Class inside the Controller Package
  	   }
 
 }
+Step 3: Goto Workbench and Insert data to database
+Step 4: TEST IT!!!!
 
-Step 3: TEST IT!!!!
+Angular - Front End
 
+Step 1: Install node.js , npm and angular
 
-
+ 	in angular : 
+	Open Cmd and use the command 
+	  npm install -g @angular/cli
+Step 2: Open Vs code
+ 	Terminal and
+	ng new Employee-Front-End
 
 
 

@@ -134,9 +134,13 @@ Step 3: Creating Angular Employee List Component
 	   2. employee-list.component.spec.ts (642 bytes)    
            3. employee-list.component.ts (302 bytes)
 	   4. employee-list.component.css (0 bytes)
+Step 3: Test it 
+	Copy the selector inside employee-list.component.ts
+	and paste it in app.component.html
 
-
-
+	//example
+	<app-employee-list></app-employee-list>
+	it will print the content of the employee-list.component.html
 
 
 

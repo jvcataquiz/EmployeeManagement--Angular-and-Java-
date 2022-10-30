@@ -40,5 +40,50 @@ Step 5: Create EmployeeRepository Interface inside the Repository Package
 	extends to JPARepository<AddtheClassHere, DatatypeofId>
 	and add @Repository Annotations
 
+Creating Employee REST API
+Step 1: Create ResourceNotFoundException Class inside the Exception Package
+	extends to RunTimeException
+
+	//Code
+	@ResponseStatus(value = HttpStatus.NOT_FOUND)
+	public class ResourceNotFoundException extends RuntimeException {
+  	  private static final long serialVersionUID = 1L;
+   	  public ResourceNotFoundException(String message){
+           super(message);
+   		 }
+	}
+
+
+Step 2: Create EmployeeController Class inside the Controller Package
+
+	//Code
+
+	@RestController -> Annotation 
+	@RequestMapping("/employee/list/") -> url root
+	public class EmployeeController {
+ 	   @Autowired -> importing EmployeeRepository
+  	   private EmployeeRepository employeeRepository;
+
+ 	   //get all employee list
+ 	   @GetMapping("/employees") -> extension Url
+  	   public List<Employee> getAllEmployee(){ -> listing all data
+  	      return employeeRepository.findAll();
+ 	   }
+
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 	

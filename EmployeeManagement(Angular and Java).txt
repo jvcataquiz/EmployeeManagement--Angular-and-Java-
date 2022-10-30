@@ -36,4 +36,9 @@ Step 5: Create Employee Class inside the Model Package
 	2. Create Constructor; 1 no Id and Bodyless
 	3. String 
 
+Step 5: Create EmployeeRepository Interface inside the Repository Package
+	extends to JPARepository<AddtheClassHere, DatatypeofId>
+	and add @Repository Annotations
+
+
 	

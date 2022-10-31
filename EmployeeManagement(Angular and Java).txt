@@ -184,17 +184,62 @@ Step 6: continuios of step 5
 
 Connecting Angular with Rest Api[employee list]
 
+Step 1: Create A Service: Employee Service
+	Command: ng g s employee
+	it will create a two files:
+	1. employee.service.ts
+	2. employee.service.spec.ts
+
+Step 2: Go to app.module.ts
+	inside the 'imports:' object
+	add :  
+		HttpClientModule
+	and:
+		import {HttpClientModule} from '@angular/common/http'
+
+Step 3: Goto employee.service.ts to inject HttpClient
+	add parameter in the constructor:
+	   private httpClient: HttpClient
+
+	and imports:
+	    import { HttpClient } from '@angular/common/http';
+
+	create a base Url above the constructor:
+	  private baseUrl ="http://localhost:8080/employee_management/list/employees";
+
+Step 4: Continue of step 3
+	Create a method:
+	//Code
+		getEmployeeList(): Observable<Employee[]>{
+   		 return this.httpClient.get<Employee[]>(`${this.baseUrl}`);
+  		}
+	import the obeservable:
+		import {Observable} from 'rxjs';
 
 
+Step 5: inject it to employee-list.component.ts
 
-
-
-
-
-
-
-
-
+	add parameter to the constructor:
+		private employeeService: EmployeeService
+	and import  EmployeeService
+Step 6: Delete / Comment out the fake object we created and create a method
+	//Code
+	 private displayAllEmployeeList(){
+ 	   this.employeeService.getEmployeeList().subscribe(data =>{
+   	   this.employees = data;
+   	 })
+ 	 }
+	and inside the ngonInit void() call the method we created:
+		this.displayAllEmployeeList();
+	
+Step 7: test it !
+	if the value is not displaying 
+ 	try to right click the browser and check the console
+	if the error is 
+	Blocked by CROS policy: No 'access-control-allow-Origin
+	Goto the backend and to Controller and add this code in the top of the RequestController Anotation
+	@CrossOrigin(origins = "http://localhost:4200")
+	Restart the Backend and Test it again
 
 
 

@@ -321,6 +321,71 @@ Step 3: Go to app.component.html and add anchor tag to add a navigation route
 	          <a class="nav-link"  routerLink="create-employee" routerLinkActive="active" href="#">Add Employee</a>
 
 
+Create Form to handle Create-Employee
+Step 1: Open create-employee.component.ts
+	add an object:
+	employee: Employee = new Employee(); and import Employee Class
+		
+Step 2: Create a Form in create-employee.component.html
+	//How to Create form in angular
 
+	<form (ngSubmit) = "onSubmit()"> -> eventlisntener create in create-employee.component.ts
+        <div class="form-group">
+            <label> First Name</label>
+            <input type="text" class ="form-control" id = "firstName"
+                [(ngModel)] = "employee.firstName" name = "firstName"> -> [(ngModel)] = "employee.firstName" use for binding form to Employee Class
+        </div>
+	</form>
+Step 3: you need to Import  [(ngModel)] 
+	Go to App.module.ts and import
+	import { FormsModule } from '@angular/forms';
+	and add FormsModule to imports array
 
-	
+	check the browser!
+
+Step 4: Goto create-employee.component.ts
+	 Create onSubmit() method
+	//add console.log(this.employee) for testing
+
+Connecting Angular Form Data to add it to the Database(Backend)-> rest Api
+Step 1: Create a method inside the employee.service.ts for the insert/create
+	//Code
+	createEmployee(employee: Employee): Observable<Object>{ Object-> if you dont know the data type// or generally
+   	 return this.httpClient.post(`${this.baseUrl}`, employee);
+  	}
+
+Step 2: Go to create-employee.component.ts to create/call the method createEmployee()
+	add :
+	private employeeService: EmployeeService,
+         private router: Router
+	inside the constructor and import the EmployeeService
+	private router: Router -> for redirecting purpose
+
+Step 3: create another method saveEmployee()
+	//Code
+	saveEmployee(){
+ 	   this.employeeService.createEmployee(this.employee).subscribe( data =>{
+   	   console.log(data);
+   	   this.goToEmployeeList();
+   	 },
+   	 error => console.log(error));
+  	}
+	and for the routing goToEmployeeList();
+	//Code
+	goToEmployeeList(){
+  	  this.router.navigate(['/employees']);
+  	}
+
+	lastly, Call the saveEmployee method to onsubmit()
+		
+	or
+
+	add only this code inside the onSubmit() mehtod 
+	//code
+	 this.employeeService.createEmployee(this.employee).subscribe( data =>{
+      	 console.log(data);
+      	 this.router.navigate(['/employees']); -> redirect after the inserting process
+   	 },
+  	  error => console.log(error));
+  	}
+Step 4: Test it!!!

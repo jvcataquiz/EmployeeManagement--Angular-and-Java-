@@ -241,6 +241,56 @@ Step 7: test it !
 	@CrossOrigin(origins = "http://localhost:4200")
 	Restart the Backend and Test it again
 
+Create Routing and navigation in Front-end
+
+Manual routing
+Step 1:  Open Index.html
+	required base tag
+	<base  htref="/">
+
+Step 2: Create app-routing.module.ts
+
+	//Code to add
+	import { NgModule } from '@angular/core';
+	import { RouterModule, Routes } from '@angular/router';
+
+	const routes: Routes = [];
+
+	@NgModule({
+ 	 imports: [RouterModule.forRoot(routes)],
+ 	 exports: [RouterModule]
+	})
+	export class AppRoutingModule { }
+
+Step 3: Goto the app.module.ts 
+	 you need to import AppRoutingModule inside imports array
+
+//Start adding routes
+Step 4: Configure in app-routing.module.ts to add routes (javascript objects)
+	inside the Routes Empty array add:
+	 {path: 'employees', component: EmployeeListComponent}
+	//for specific understanding 
+	{path: 'urlpathyouwant', component: Componentyouwanttodisplayinthespecificroute}
+
+Step 5: continue step 4 redirect path from "/" to "employees"
+	 {path: '', redirectTo:'employees', pathMatch: 'full'}
+
+
+Step 6: Configure router outlet directive (goto app.component.html)
+
+	replace <app-employee-list></app-employee-list> with:
+	    <router-outlet></router-outlet>
+	to load and update the template dynamically
+
+
+
+
+
+
+
+
+
+
 
 
 

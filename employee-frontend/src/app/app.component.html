@@ -1,7 +1,20 @@
-<h1 class="text-center">{{title}}</h1>
+<nav class="navbar navbar-expand-lg bg-light">
+    <div class="container-fluid">
+      <a class="navbar-brand" routerlink="employees" routerLinkActive="active" href="#">Employees List</a> 
+    </div>
+  </nav>
+<h1 class="text-center mt-4">{{title}}</h1>
 
 <div class="container">
     <div class="row">
         <router-outlet></router-outlet>
     </div>
 </div>
+
+<footer class="footer text-center">
+    <div class="container">
+       
+            Created by Jerick Vegile M. Cataquiz
+       
+    </div>
+</footer>

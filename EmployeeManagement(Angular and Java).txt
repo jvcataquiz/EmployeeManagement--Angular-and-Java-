@@ -283,7 +283,10 @@ Step 6: Configure router outlet directive (goto app.component.html)
 	to load and update the template dynamically
 
 
-
+Navigation 
+Step 1: Add Navigation Bar Using Bootstrap in app.component.html
+	add routerLink = "urlpath/employees" to the anchor tag
+	and also add routerLinkActive="active" -> to specify what router is active
 
 
 

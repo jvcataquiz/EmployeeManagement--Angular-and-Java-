@@ -289,20 +289,36 @@ Step 1: Add Navigation Bar Using Bootstrap in app.component.html
 	and also add routerLinkActive="active" -> to specify what router is active
 
 
+Create Rest Api/ insert api to databse
+//Backend Part
+
+Step 1: Create a handler to the Backend
+	//Code 
+	 @PostMapping("/employees") -> Handler
+  	  public Employee createEmployee(@RequestBody Employee employee){ 
+   	 return employeeRepository.save(employee); -> save to the jpa repo
+   	 }
+
+Step 2: Test it to Post Man
+	get the Url and change to Post
+	-> body ->raw -> Json
+	create a data/json file you want to insert
 
 
+Creating Angular Create Employee Component (Front-End)
 
 
+Step 1: To create create employee 
+	//Command
+	   ng g c create-employee
 
+Step 2: Create a route in the app-routing.module.ts
+	add : {path: 'create-employee', component: CreateEmployeeComponent}
 
+Step 3: Go to app.component.html and add anchor tag to add a navigation route
 
-
-
-
-
-
-
-
+	//Example
+	          <a class="nav-link"  routerLink="create-employee" routerLinkActive="active" href="#">Add Employee</a>
 
 
 

@@ -19,14 +19,14 @@ export class EmployeeUpdateComponent implements OnInit {
    this.id = this.routeparams.snapshot.params['id'];
    this.employeeService.getEmployeeById(this.id).subscribe(data =>{
     this.employee = data;
-   });
+   }, error => console.log(error));
   }
   onSubmit(){
-    
+    this.employeeService.updateEmployee(this.id, this.employee).subscribe(data => {
+      // this.route.navigate(['/updateemployee/',this.id]); or
+      this.route.navigate(['/employees']);
+    }, error => console.log(error));
   }
 
-  goToEmployeeList(){
-    this.route.navigate(['/employees']);
-  }
 
 }

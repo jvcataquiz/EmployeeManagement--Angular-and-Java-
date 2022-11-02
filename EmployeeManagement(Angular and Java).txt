@@ -472,5 +472,21 @@ Step 3: Insert this code in thengOnit()
     		this.employee = data;  -> assigning all the data to form
 	   });
 
+Updating the databse form angular to rest api (Front-end)
 
+Step 1: got to employe.service.ts
+ 	Create a method for update
+	//Code
+ 	updateEmployee(id: number, employee: Employee): Observable<Object>{
+        return this.httpClient.put(`${this.baseUrl}/${id}`, employee);
+        }
+Step 2: goto employee-update.component.ts
+	//
+	 onSubmit(){ -> this mehtod will call in hte update form
+  	 	 this.employeeService.updateEmployee(this.id, this.employee).subscribe(data => {
+     	 	this.route.navigate(['/employees']); -> redirect after the execution
+    		}, error => console.log(error));
+ 	 }
+
+Step 3: Test it!!!
 

@@ -403,8 +403,25 @@ Step 1: Go to EmployeeController and create a handler
 	Code Use:
 	1. ResponseEntity<Employee> handle the object and if status is ok it will return it
 	2. orElseThrow(() -> new ResourceNotFoundException("Employee Not Exist!!!")); -> if the id is not found it will throw a message!!
-	
 
+Create Update Method
+Step 1: Create a put method to handle the update 
+	//Code
+	@PutMapping("/employees/{id}") -> Using Put Method (Update)
+
+    	public ResponseEntity<Employee> updateEmployee(@PathVariable Long id,@RequestBody Employee employeeDetails){ -> @RequestBody Employee employeeDetails(From the Form)
+        Employee employee = employeeRepository.findById(id).orElseThrow(() -> new ResourceNotFoundException("Employee Not Exist!!!")); -> Searching the Id and if not found it will throw Message
+        employee.setFirstName(employeeDetails.getFirstName()); -> updating the values
+        employee.setLastName(employeeDetails.getLastName());
+        employee.setEmailAddress(employeeDetails.getEmailAddress());
+        employee.setAddress(employeeDetails.getAddress());
+
+       Employee updatedEmployee = employeeRepository.save(employee); -> save all the value to the database
+
+       return ResponseEntity.ok(updatedEmployee); -> return updated
+    }
+	
+Step 2: test it
 
 
 

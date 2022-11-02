@@ -423,14 +423,54 @@ Step 1: Create a put method to handle the update
 	
 Step 2: test it
 
+Create Angular Update Component (Front-end Side)
+Step 1: To Create Update Component use the command
+	//Command
+	ng g c employee-update
+	it will create 1 folder and inside that folder has 4 files
+
+Step 2: Create a route for the update component in app-routing.module.ts
+  	{path:'updateemployee/:id', component: EmployeeUpdateComponent}
+
+Step 3: Go to the employee-list.component.html and add button
+
+	   <button (click) = "updateEmployee(employee.id)"></button>
+
+		click -> events
+		updateEmployee -> we will create a method to handle the jumping to specific data
+		employee.id -> id that we want to view
+
+Step 4: Define/create updateEmployee to employee-list.component.ts
+	1. add private route: Router in the constructor and import it
+	//Code
+	  updateEmployee(id: number){ -> we call it in the button 
+    		this.route.navigate(['/updateemployee', id]); -> redirect to specific id
+  		}
+Step 5: Copy the create-employee.component.html to employee-update.component.html
+Step 6: Test it!!!
 
 
 
+Connecting Angular to with the Employee Rest Api (Java Database)
+Step 1: Open the employee.service.ts
+	//Code
+	getEmployeeById(id: number):Observable<Employee>{
+   	 return this.httpClient.get<Employee>(`${this.baseUrl}/${id}`);
+  	}
 
+Step 2: Goto employee-update.component.ts
+	insert this 3 parameter in the constructor
+	1. private employeeService: EmployeeService -> to access the EmployeeService methods
+	2. private routeparams: ActivateRoute -> to get the id from the url
+	3. private route: Router -> for the routing/redirecting/jumping
+	and import it
 
-
-
-
+Step 3: Insert this code in thengOnit()
+  	//Code
+	this.id = this.routeparams.snapshot.params['id']; -> to get the id in the url and assign it to the id
+	 this.employeeService.getEmployeeById(this.id).subscribe(data =>{ -> checking the id then
+    		this.employee = data;  -> assigning all the data to form
+	   });
 
 
 

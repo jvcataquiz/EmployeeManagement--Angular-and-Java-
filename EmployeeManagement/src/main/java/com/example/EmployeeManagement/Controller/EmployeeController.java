@@ -1,8 +1,10 @@
 package com.example.EmployeeManagement.Controller;
 
+import com.example.EmployeeManagement.Exception.ResourceNotFoundException;
 import com.example.EmployeeManagement.Model.Employee;
 import com.example.EmployeeManagement.Repository.EmployeeRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -19,9 +21,14 @@ public class EmployeeController {
         return employeeRepository.findAll();
     }
     //insert/create employee api
-
     @PostMapping("/employees")
     public Employee createEmployee(@RequestBody Employee employee){
     return employeeRepository.save(employee);
+    }
+    //get employee record by id
+    @GetMapping("/employees/{id}")
+    public ResponseEntity<Employee> getEmployeeById(@PathVariable Long id){
+        Employee employee = employeeRepository.findById(id).orElseThrow(() -> new ResourceNotFoundException("Employee Not Exist!!!"));
+        return ResponseEntity.ok(employee);
     }
 }

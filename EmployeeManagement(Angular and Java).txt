@@ -389,3 +389,31 @@ Step 3: create another method saveEmployee()
   	  error => console.log(error));
   	}
 Step 4: Test it!!!
+
+Creatin Get Employee by id rest Api
+//Backend
+Step 1: Go to EmployeeController and create a handler
+	//Code
+	 @GetMapping("/employees/{id}") -> url handler
+  	  public ResponseEntity<Employee> getEmployeeById(@PathVariable Long id){
+          Employee employee = employeeRepository.findById(id).orElseThrow(() -> new ResourceNotFoundException("Employee Not Exist!!!"));
+          return ResponseEntity.ok(employee);
+    	}
+
+	Code Use:
+	1. ResponseEntity<Employee> handle the object and if status is ok it will return it
+	2. orElseThrow(() -> new ResourceNotFoundException("Employee Not Exist!!!")); -> if the id is not found it will throw a message!!
+	
+
+
+
+
+
+
+
+
+
+
+
+
+

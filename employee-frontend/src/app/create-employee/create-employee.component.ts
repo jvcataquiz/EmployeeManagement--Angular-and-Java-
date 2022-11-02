@@ -15,7 +15,7 @@ export class CreateEmployeeComponent implements OnInit {
   ngOnInit(): void {
   }
   onSubmit(){
-    this.employeeService.createEmployee(this.employee).subscribe( data =>{
+    this.employeeService.createEmployee(this.employee).subscribe( data => {
       console.log(data);
       this.router.navigate(['/employees']);
     },

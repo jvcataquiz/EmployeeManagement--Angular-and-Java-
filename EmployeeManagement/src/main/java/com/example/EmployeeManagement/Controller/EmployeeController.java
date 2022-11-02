@@ -7,7 +7,10 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
+
 @CrossOrigin(origins = "http://localhost:4200")
 @RestController
 @RequestMapping("/employee_management/list/")
@@ -44,5 +47,13 @@ public class EmployeeController {
        Employee updatedEmployee = employeeRepository.save(employee);
 
        return ResponseEntity.ok(updatedEmployee);
+    }
+    @DeleteMapping("/employees/{id}")
+    public ResponseEntity<Map<String, Boolean>> deleteEmployeeById(@PathVariable Long id){
+        Employee employee = employeeRepository.findById(id).orElseThrow(() -> new ResourceNotFoundException("Employee Not Exist!!!"));
+        employeeRepository.delete(employee);
+        Map<String, Boolean> response = new HashMap<>();
+        response.put("DELETED", Boolean.TRUE);
+       return ResponseEntity.ok(response);
     }
 }
